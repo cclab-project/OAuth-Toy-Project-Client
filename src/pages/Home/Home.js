@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { MobileContainer } from './style'
+
 const Home = () => {
     return (
-        <div>
+        <MobileContainer>
             홈
-        </div>
+        </MobileContainer>
     );
 };
 
