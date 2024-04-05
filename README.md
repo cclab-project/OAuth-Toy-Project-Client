@@ -1,2 +1,2 @@
-# oAuth-Toy-Project-Client
-oAuth Toy Project Client
+# OAuth-Toy-Project-Client
+OAuth Toy Project Client
