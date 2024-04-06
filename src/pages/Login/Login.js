@@ -19,7 +19,7 @@ import {
 
 const Login = () => {
     const kakaoLoginHandler = () => {
-        
+        window.location.href = KAKAO_LINK;
     };
     return (
         <MobileContainer>
