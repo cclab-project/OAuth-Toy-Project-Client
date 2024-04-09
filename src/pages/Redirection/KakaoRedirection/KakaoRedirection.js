@@ -22,19 +22,19 @@ const KakaoRedirection = () => {
     if (data) {
         console.log(data)
         if (data.isExist) {
+            const accessToken = data.headers["accesstoken"];
+            const refreshToken = data.headers["refreshtoken"];
+            localStorage.setItem("accessToken", accessToken);
+            localStorage.setItem("refreshToken", refreshToken);
+            navigate('/home');
+        }
+        else {
             navigate('/AddInfo', {
                 state: {
                     email: data.email,
                     name: data.name,
                 }
             })
-        }
-        else {
-            const accessToken = data.headers["accesstoken"];
-            const refreshToken = data.headers["refreshtoken"];
-            localStorage.setItem("accessToken", accessToken);
-            localStorage.setItem("refreshToken", refreshToken);
-            navigate('/home');
         }
         
     }
