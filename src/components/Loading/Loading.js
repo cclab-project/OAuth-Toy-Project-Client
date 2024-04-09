@@ -1,10 +1,20 @@
 import React from 'react';
 
+import {
+    MobileContainer,
+    BodyContainer,
+    Title
+} from './style'
+
 const Loading = () => {
     return (
-        <>
-            로그인중입니다...
-        </>
+        <MobileContainer>
+            <BodyContainer>
+                <Title>
+                    로그인중입니다...
+                </Title>
+            </BodyContainer>
+        </MobileContainer>
     );
 };
 

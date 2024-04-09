@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import  styled  from 'styled-components';
 
 export const MobileContainer = styled.div`
     width: 380px;

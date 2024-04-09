@@ -17,10 +17,26 @@ const KakaoRedirection = () => {
         return <Loading />;
     }
     if (error) {
-        
+        console.log(error)
     }
     if (data) {
         console.log(data)
+        if (data.isNew) {
+            navigate('/AddInfo', {
+                state: {
+                    email: data.email,
+                    name: data.name,
+                }
+            })
+        }
+        else {
+            const accessToken = data.headers["accesstoken"];
+            const refreshToken = data.headers["refreshtoken"];
+            localStorage.setItem("accessToken", accessToken);
+            localStorage.setItem("refreshToken", refreshToken);
+            navigate('/home');
+        }
+        
     }
 
 }
