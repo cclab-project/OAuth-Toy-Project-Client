@@ -20,8 +20,10 @@ const KakaoRedirection = () => {
         console.log(error)
     }
     if (data) {
-        console.log(data)
+        console.log(data);
+        console.log(data.exist);
         if (data.exist) {
+            console.log('true');
             const accessToken = data.headers["accesstoken"];
             const refreshToken = data.headers["refreshtoken"];
             localStorage.setItem("accessToken", accessToken);
