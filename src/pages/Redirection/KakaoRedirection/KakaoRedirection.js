@@ -22,7 +22,7 @@ const KakaoRedirection = () => {
     if (data) {
         console.log(data);
         console.log(data.data.exist);
-        if (data.exist) {
+        if (data.data.exist) {
             console.log('true');
             const accessToken = data.headers["accesstoken"];
             const refreshToken = data.headers["refreshtoken"];
