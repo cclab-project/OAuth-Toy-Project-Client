@@ -21,7 +21,7 @@ const KakaoRedirection = () => {
     }
     if (data) {
         console.log(data)
-        if (data.isNew) {
+        if (data.isExist) {
             navigate('/AddInfo', {
                 state: {
                     email: data.email,

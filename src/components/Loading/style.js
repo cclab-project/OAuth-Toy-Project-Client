@@ -21,7 +21,7 @@ export const BodyContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 50px;
+    margin-top: 250px;
 `
 
 export const Title = styled.div`
