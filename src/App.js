@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
+import AddInfo from "./pages/AddInfo/AddInfo";
+
 import Background from "./components/Background/Background";
+
+//redirection
+import KakaoRedirection from "./pages/Redirection/KakaoRedirection/KakaoRedirection";
 
 function App() {
   function setScreenSize() {
@@ -18,6 +23,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/Home" element={<Home />} />
+          <Route path="/AddInfo" element={<AddInfo />} />
+          <Route exact path="/kakao/callback" element={<KakaoRedirection />} />
         </Routes>
       </Router>
     </Background>
