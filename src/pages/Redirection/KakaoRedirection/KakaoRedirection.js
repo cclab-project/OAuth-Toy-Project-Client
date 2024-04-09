@@ -21,7 +21,7 @@ const KakaoRedirection = () => {
     }
     if (data) {
         console.log(data);
-        console.log(data.exist);
+        console.log(data.data.exist);
         if (data.exist) {
             console.log('true');
             const accessToken = data.headers["accesstoken"];
@@ -34,8 +34,8 @@ const KakaoRedirection = () => {
 
             navigate('/AddInfo', {
                 state: {
-                    email: data.email,
-                    name: data.name,
+                    email: data.data.email,
+                    name: data.data.name,
                 }
             })
         }
