@@ -21,7 +21,7 @@ const KakaoRedirection = () => {
     }
     if (data) {
         console.log(data)
-        if (data.isExist) {
+        if (data.exist) {
             const accessToken = data.headers["accesstoken"];
             const refreshToken = data.headers["refreshtoken"];
             localStorage.setItem("accessToken", accessToken);
@@ -29,6 +29,7 @@ const KakaoRedirection = () => {
             navigate('/home');
         }
         else {
+
             navigate('/AddInfo', {
                 state: {
                     email: data.email,
