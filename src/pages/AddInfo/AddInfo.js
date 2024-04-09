@@ -20,7 +20,11 @@ const AddInfo = () => {
                 </Title>
                 <Label>
                     전화번호: 
-                    <Input/>
+                    <Input
+                        value={phoneNum}
+                        onChange={(e) => {
+                            
+                        }}/>
                 </Label>
                 <Label>
                     나이:
