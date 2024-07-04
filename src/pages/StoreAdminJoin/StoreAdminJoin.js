@@ -9,7 +9,7 @@ const StoreAdminJoin = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/localhost:8080/open-api/store/temp`, {
+                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/open-api/store/temp`, {
                     
                 });
                 console.log(response.data);
