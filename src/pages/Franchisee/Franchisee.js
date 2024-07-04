@@ -38,12 +38,12 @@ const Franchisee = () => {
         const formData = new FormData();
         formData.append('name', name);
         formData.append('address', address);
-        formData.append('category', category);
-        formData.append('minAmount', minAmount);
-        formData.append('minDeliveryAmount', minDeliveryAmount);
-        formData.append('call', call);
+        formData.append('store_category', category);
+        formData.append('minimum_amount', minAmount);
+        formData.append('minimum_delivery_amount', minDeliveryAmount);
+        formData.append('phone_number', call);
         if (thumbnail) {
-            formData.append('thumbnail', thumbnail);
+            formData.append('thumbnail_url', thumbnail);
         }
         try {
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/open-api/store/register`, formData, {
