@@ -44,6 +44,7 @@ const Franchisee = () => {
         formData.append('phoneNumber', call);
         if (thumbnail) {
             const blob = new Blob([thumbnail], { type: thumbnail.type });
+            console.log(blob);
             formData.append('thumbnail', blob, thumbnail.name);
         }
         for (const x of formData) {

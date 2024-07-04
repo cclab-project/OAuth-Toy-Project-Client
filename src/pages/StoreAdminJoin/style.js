@@ -3,20 +3,27 @@ import styled from "styled-components";
 export const Container = styled.div`
     margin: 100px auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     width: 100%;
     justify-content: center;
+`
+export const Title = styled.div`
     font-size: 64px;
 `
 
 export const InputForm = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    margin-top: 50px;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: auto;
+`
+
+export const SelectText = styled.select`
+    width: 290px;
+    height: 30px;
 `
 
 export const InputBox = styled.div`
