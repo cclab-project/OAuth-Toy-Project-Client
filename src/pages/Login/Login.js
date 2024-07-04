@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 
 //link
 import { KAKAO_LINK } from '../../config/config';
@@ -18,12 +19,19 @@ import {
 } from './style'
 
 const Login = () => {
+    const navigate = useNavigate();
     const kakaoLoginHandler = () => {
         window.location.href = KAKAO_LINK;
     };
+    const goFranchisee = () => {
+        navigate("/Franchisee");
+    }
     return (
         <MobileContainer>
             <Logo />
+            <div onClick={goFranchisee}>
+                가맹점 등록하기
+            </div>
             <JoinContainer>
                 <SNSIcon
                     src={kakao}

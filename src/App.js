@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import AddInfo from "./pages/AddInfo/AddInfo";
-
+import Franchisee from "./pages/Franchisee/Franchisee";
 import Background from "./components/Background/Background";
 
 //redirection
@@ -24,6 +24,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/AddInfo" element={<AddInfo />} />
+          <Route path="/Franchisee" element={<Franchisee />} />
           <Route exact path="/kakao/callback" element={<KakaoRedirection />} />
         </Routes>
       </Router>
