@@ -1,15 +1,22 @@
 import React, {useState} from 'react';
+import { useNavigate } from "react-router-dom";
 
 import {
     Container,
     InputForm,
     InputBox,
     InputText,
+    SubmitButton,
+    Join,
 } from "./style";
 const StoreAdminLogin = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const goAdminJoin = () => {
+        navigate("/AdminJoin");
+    }
     return (
         <>
             <Container>
@@ -30,6 +37,12 @@ const StoreAdminLogin = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder='비밀번호'/>
                 </InputBox>
+                <SubmitButton>
+                    로그인
+                </SubmitButton>
+                <Join onClick={goAdminJoin}>
+                    관리자 회원가입
+                </Join>
             </InputForm>
         </>
     );

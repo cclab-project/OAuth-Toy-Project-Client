@@ -43,8 +43,12 @@ const Franchisee = () => {
         formData.append('minimumDeliveryAmount', minDeliveryAmount);
         formData.append('phoneNumber', call);
         if (thumbnail) {
-            formData.append('thumbnailUrl', thumbnail);
+            const blob = new Blob([thumbnail], { type: thumbnail.type });
+            formData.append('thumbnail', blob, thumbnail.name);
         }
+        for (const x of formData) {
+            console.log(x);
+        };
         try {
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/open-api/store/register`, formData, {
                 headers: {
