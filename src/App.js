@@ -5,7 +5,7 @@ import Login from './pages/Login/Login';
 import AddInfo from "./pages/AddInfo/AddInfo";
 import Franchisee from "./pages/Franchisee/Franchisee";
 import Background from "./components/Background/Background";
-
+import StoreAdminLogin from "./pages/StoreAdminLogin/StoreAdminLogin";
 //redirection
 import KakaoRedirection from "./pages/Redirection/KakaoRedirection/KakaoRedirection";
 
@@ -18,17 +18,18 @@ function App() {
     setScreenSize();
   });
   return (
-    <Background>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/AddInfo" element={<AddInfo />} />
-          <Route path="/Franchisee" element={<Franchisee />} />
-          <Route exact path="/kakao/callback" element={<KakaoRedirection />} />
-        </Routes>
-      </Router>
-    </Background>
+
+    <Router>
+      <Routes>
+        <Route path="/" element={<Background><Login /></Background>} />
+        <Route path="/Home" element={<Background><Home /></Background>} />
+        <Route path="/AddInfo" element={<Background><AddInfo /></Background>} />
+        <Route path="/Franchisee" element={<Background><Franchisee /></Background>} />
+        <Route path="/AdminLogin" element={<StoreAdminLogin />} />
+        <Route exact path="/kakao/callback" element={<KakaoRedirection />} />
+      </Routes>
+    </Router>
+
   );
 }
 

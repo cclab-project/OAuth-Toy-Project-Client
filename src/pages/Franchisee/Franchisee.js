@@ -9,7 +9,7 @@ import {
     SelectText,
     InputText,
     SubmitButton,
- } from './style';
+} from './style';
 const Franchisee = () => {
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
@@ -38,12 +38,12 @@ const Franchisee = () => {
         const formData = new FormData();
         formData.append('name', name);
         formData.append('address', address);
-        formData.append('store_category', category);
-        formData.append('minimum_amount', minAmount);
-        formData.append('minimum_delivery_amount', minDeliveryAmount);
-        formData.append('phone_number', call);
+        formData.append('storeCategory', category);
+        formData.append('minimumAmount', minAmount);
+        formData.append('minimumDeliveryAmount', minDeliveryAmount);
+        formData.append('phoneNumber', call);
         if (thumbnail) {
-            formData.append('thumbnail_url', thumbnail);
+            formData.append('thumbnailUrl', thumbnail);
         }
         try {
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/open-api/store/register`, formData, {
@@ -56,7 +56,7 @@ const Franchisee = () => {
         } catch (error) {
             console.error('Error uploading file:', error);
         }
-        
+
     }
     return (
         <MobileContainer>
