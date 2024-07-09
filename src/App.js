@@ -7,6 +7,7 @@ import Franchisee from "./pages/Franchisee/Franchisee";
 import Background from "./components/Background/Background";
 import StoreAdminLogin from "./pages/StoreAdminLogin/StoreAdminLogin";
 import StoreAdminJoin from './pages/StoreAdminJoin/StoreAdminJoin';
+import StoreAdminMain from "./pages/StoreAdminMain/StoreAdminMain";
 //redirection
 import KakaoRedirection from "./pages/Redirection/KakaoRedirection/KakaoRedirection";
 
@@ -29,6 +30,8 @@ function App() {
         <Route path="/Franchisee" element={<Background><Franchisee /></Background>} />
         <Route path="/AdminLogin" element={<StoreAdminLogin />} />
         <Route path="/AdminJoin" element={<StoreAdminJoin />} />
+        <Route path="/AdminMain" element={<StoreAdminMain />} />
+
         <Route exact path="/kakao/callback" element={<KakaoRedirection />} />
       </Routes>
     </Router>
