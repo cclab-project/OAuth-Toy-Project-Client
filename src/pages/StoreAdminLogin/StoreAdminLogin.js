@@ -42,7 +42,7 @@ const StoreAdminLogin = () => {
         <>
             <Container>
                 <Title>
-                    CClab Delivery 관리자 로그인
+                    CClab Delivery 관리자 로그인입니다.
                 </Title>
                 <InputForm onSubmit={loginSubmitHandler}>
                     <InputBox>
