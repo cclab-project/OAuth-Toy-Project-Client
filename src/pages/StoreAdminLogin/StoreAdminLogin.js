@@ -29,7 +29,7 @@ const StoreAdminLogin = () => {
                 },
                 withCredentials: true
             });
-            console.log(response.data);
+            console.log(response);
             alert('로그인 성공');
         } catch (error) {
             console.error('Error logging in:', error);
