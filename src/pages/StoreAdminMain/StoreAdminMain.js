@@ -49,24 +49,29 @@ const StoreAdminMain = () => {
     useEffect(() => {
         const eventSource = new EventSource(`${process.env.REACT_APP_SERVER_URL2}/api/sse/connect`);
 
-        eventSource.onmessage = async (event) => {
+
+        eventSource.onopen = async (event) => {
             const newMessage = JSON.parse(event.data);
             setMessages((prevMessages) => [...prevMessages, newMessage]);
         };
 
-        eventSource.addEventListener('new_thread', (event) => {
-            const eventData = JSON.parse(event.data);
-            setMessages_2(eventData);
-            console.log("Received event:", eventData);
-        });
+        // eventSource.addEventListener('new_thread', (event) => {
+        //     const eventData = JSON.parse(event.data);
+        //     setMessages_2(eventData);
+        //     console.log("Received event:", eventData);
+        // });
+        eventSource.onTimeout = (error) => {
+            console.error('SSE TimeOut:', error);
+            eventSource.onCompletion();
+        };
 
         eventSource.onerror = (error) => {
             console.error('SSE Error:', error);
-            eventSource.close();
+            eventSource.onCompletion();
         };
 
         return () => {
-            eventSource.close();
+            eventSource.onCompletion();
         };
     }, []);
 
