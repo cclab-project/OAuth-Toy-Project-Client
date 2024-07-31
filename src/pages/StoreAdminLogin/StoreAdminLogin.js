@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 import {
     Container,
@@ -18,15 +19,16 @@ const StoreAdminLogin = () => {
     const loginSubmitHandler = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('/login', {
-                username: email,
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/open-api/store-user/login`, {
+                email: email,
                 password: password,
             });
             console.log(response.data);
-            // 로그인 성공 시 추가적인 작업을 여기에 작성하세요.
+            alert('로그인 성공');
         } catch (error) {
             console.error('Error logging in:', error);
-            // 로그인 실패 시 추가적인 작업을 여기에 작성하세요.
+            alert('로그인 실패');
+
         }
     }
     const goAdminJoin = () => {
