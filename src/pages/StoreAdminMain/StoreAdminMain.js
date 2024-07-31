@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useQueryClient } from 'react-query';
+
 
 import {
     Container,
@@ -45,13 +44,12 @@ const StoreAdminMain = () => {
 
     }
 
-    const queryClient = useQueryClient();
     const [messages, setMessages] = useState([]);
     const [messages_2, setMessages_2] = useState([]);
     useEffect(() => {
         const eventSource = new EventSource(`${process.env.REACT_APP_SERVER_URL2}/api/sse/connect`);
 
-        eventSource.onmessage = (event) => {
+        eventSource.onmessage = async (event) => {
             const newMessage = JSON.parse(event.data);
             setMessages((prevMessages) => [...prevMessages, newMessage]);
         };
