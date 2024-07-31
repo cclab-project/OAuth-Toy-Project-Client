@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import qs from 'qs';
 
 import {
     Container,
@@ -19,16 +20,19 @@ const StoreAdminLogin = () => {
     const loginSubmitHandler = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL2}/login`, {
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL2}/login`, qs.stringify({
                 email: email,
                 password: password,
+            }), {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
             });
             console.log(response.data);
             alert('로그인 성공');
         } catch (error) {
             console.error('Error logging in:', error);
             alert('로그인 실패');
-
         }
     }
     const goAdminJoin = () => {
