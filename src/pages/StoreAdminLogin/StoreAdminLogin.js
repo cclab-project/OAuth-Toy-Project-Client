@@ -30,7 +30,7 @@ const StoreAdminLogin = () => {
                 withCredentials: true
             });
             console.log(response);
-            alert('로그인 성공');
+            navigate("/AdminMain");
         } catch (error) {
             console.error('Error logging in:', error);
             alert('로그인 실패');

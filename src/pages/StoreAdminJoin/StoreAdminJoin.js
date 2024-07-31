@@ -22,17 +22,6 @@ const StoreAdminJoin = () => {
     const handleSelectChange = (event) => {
         setAuth(event.target.value);
     };
-    // useEffect(() => {
-    //     const getData = async () => {
-    //         try {
-    //             const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/open-api/store/temp`);
-    //             console.log(response.data);
-    //         } catch (error) {
-    //             console.log('에러');
-    //         }
-    //     };
-    //     getData();
-    // }, []);
 
     const submitHandler = async () => {
         if (password !== passwordCheck) {
