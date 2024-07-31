@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 import {
@@ -12,6 +13,7 @@ import {
     Title,
 } from './style';
 const StoreAdminJoin = () => {
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -38,13 +40,14 @@ const StoreAdminJoin = () => {
             return;
         }
         try {
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/open-api/store-user/register`, {
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL2}/open-api/store-user/register`, {
                 storeName: name,
                 email: email,
                 password: password,
                 role: auth,
             });
             console.log(response.data);
+            navigate("/AdminLogin");
         } catch (error) {
             console.log('에러');
         }

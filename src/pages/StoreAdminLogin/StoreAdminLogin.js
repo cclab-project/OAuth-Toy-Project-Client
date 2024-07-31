@@ -19,7 +19,7 @@ const StoreAdminLogin = () => {
     const loginSubmitHandler = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/open-api/store-user/login`, {
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL2}/login`, {
                 email: email,
                 password: password,
             });
