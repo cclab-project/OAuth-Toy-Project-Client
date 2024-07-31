@@ -21,7 +21,7 @@ const StoreAdminLogin = () => {
         event.preventDefault();
         try {
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL2}/login`, qs.stringify({
-                email: email,
+                username: email,
                 password: password,
             }), {
                 headers: {
@@ -62,10 +62,10 @@ const StoreAdminLogin = () => {
                     <SubmitButton type='submit'>
                         로그인
                     </SubmitButton>
-                    <Join onClick={goAdminJoin}>
-                        관리자 회원가입
-                    </Join>
                 </InputForm>
+                <Join onClick={goAdminJoin}>
+                    관리자 회원가입
+                </Join>
             </Container>
         </>
     );
