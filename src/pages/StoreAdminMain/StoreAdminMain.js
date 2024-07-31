@@ -14,22 +14,23 @@ import {
     SseButton,
 } from "./style";
 const StoreAdminMain = () => {
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/open-api/store/temp`);
-                console.log(response.data);
-            } catch (error) {
-                console.log('에러');
-            }
-        };
-        getData();
-    }, []);
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         try {
+    //             const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/open-api/store/temp`);
+    //             console.log(response.data);
+    //         } catch (error) {
+    //             console.log('에러');
+    //         }
+    //     };
+    //     getData();
+    // }, []);
 
     //메뉴추가
     const [menuName, setMenuName] = useState('');
     const [menuCost, setMenuCost] = useState('');
     const [thumbnail, setThumbnail] = useState(null);
+    const [messages, setMessages] = useState([]);
     const handleImageChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -44,53 +45,30 @@ const StoreAdminMain = () => {
 
     }
 
-    //SSE 연결
-    const [messages, setMessages] = useState([]);
-    const [connected, setConnected] = useState(false);
-    const [eventSource, setEventSource] = useState(null);
-    const startSse = () => {
-        const es = new EventSource(`${process.env.REACT_APP_SERVER_URL2}/api/sse/connect`);
+    useEffect(() => {
+        const eventSource = new EventSource(`${process.env.REACT_APP_SERVER_URL2}/api/sse/connect`);
 
-        es.onopen = () => {
-            setConnected(true);
-            console.log('SSE connection opened');
-        };
-
-        es.onmessage = (event) => {
+        eventSource.onmessage = (event) => {
             const newMessage = JSON.parse(event.data);
             setMessages((prevMessages) => [...prevMessages, newMessage]);
         };
 
-        es.onerror = (error) => {
+        eventSource.onerror = (error) => {
             console.error('SSE Error:', error);
-            setConnected(false);
-            es.close();
+            eventSource.close();
         };
 
-        setEventSource(es);
-    };
-
-    const stopSse = () => {
-        if (eventSource) {
+        return () => {
             eventSource.close();
-            setConnected(false);
-            console.log('SSE connection closed');
-        }
-    };
+        };
+    }, []);
 
-    const toggleSse = () => {
-        if (connected) {
-            stopSse();
-        } else {
-            startSse();
-        }
-    };
-    
+
     return (
         <Container>
-            <Title>
+            <h1>
                 가맹점 이름
-            </Title>
+            </h1>
             <InputForm>
                 <InputBox>
                     <KeyText>
@@ -130,10 +108,7 @@ const StoreAdminMain = () => {
             </SubmitButton>
             <Hr />
             <div>
-                <p>Status: {connected ? 'Connected' : 'Disconnected'}</p>
-                <SseButton onClick={toggleSse} $onSSE={connected}>
-                    {connected ? 'Stop SSE' : 'Start SSE'}
-                </SseButton>
+                <h1>주문 받기</h1>
                 <ul>
                     {messages.map((message, index) => (
                         <li key={index}>{message.message}</li>
