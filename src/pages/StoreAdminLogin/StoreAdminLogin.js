@@ -25,8 +25,9 @@ const StoreAdminLogin = () => {
                 password: password,
             }), {
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                withCredentials: true
             });
             console.log(response.data);
             alert('로그인 성공');
