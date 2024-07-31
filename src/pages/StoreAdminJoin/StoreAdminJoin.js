@@ -20,17 +20,37 @@ const StoreAdminJoin = () => {
     const handleSelectChange = (event) => {
         setAuth(event.target.value);
     };
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/open-api/store/temp`);
-                console.log(response.data);
-            } catch (error) {
-                console.log('에러');
-            }
-        };
-        getData();
-    }, []);
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         try {
+    //             const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/open-api/store/temp`);
+    //             console.log(response.data);
+    //         } catch (error) {
+    //             console.log('에러');
+    //         }
+    //     };
+    //     getData();
+    // }, []);
+
+    const submitHandler = async () => {
+        if (password !== passwordCheck) {
+            alert("비밀번호가 서로 다릅니다.");
+            return;
+        }
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/open-api/store-user/register`, {
+                storeName: name,
+                email: email,
+                password: password,
+                role: auth,
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.log('에러');
+        }
+    }
+
+
     return (
         <>
             <Container>
@@ -74,7 +94,7 @@ const StoreAdminJoin = () => {
                             <option value="USER">USER</option>
                         </SelectText>
                     </InputBox>
-                    <SubmitButton>
+                    <SubmitButton onClick={submitHandler}>
                         회원가입
                     </SubmitButton>
                 </InputForm>

@@ -15,6 +15,20 @@ const StoreAdminLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const loginSubmitHandler = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await axios.post('/login', {
+                username: email,
+                password: password,
+            });
+            console.log(response.data);
+            // 로그인 성공 시 추가적인 작업을 여기에 작성하세요.
+        } catch (error) {
+            console.error('Error logging in:', error);
+            // 로그인 실패 시 추가적인 작업을 여기에 작성하세요.
+        }
+    }
     const goAdminJoin = () => {
         navigate("/AdminJoin");
     }
@@ -24,7 +38,7 @@ const StoreAdminLogin = () => {
                 <Title>
                     CClab Delivery 관리자 로그인
                 </Title>
-                <InputForm>
+                <InputForm onSubmit={loginSubmitHandler}>
                     <InputBox>
                         <InputText
                             type="email"
@@ -39,7 +53,7 @@ const StoreAdminLogin = () => {
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder='비밀번호' />
                     </InputBox>
-                    <SubmitButton>
+                    <SubmitButton type='submit'>
                         로그인
                     </SubmitButton>
                     <Join onClick={goAdminJoin}>

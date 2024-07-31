@@ -13,7 +13,7 @@ export const Title = styled.div`
     font-size: 64px;
 `
 
-export const InputForm = styled.div`
+export const InputForm = styled.form`
     display: flex;
     flex-direction: column;
     margin-top: 100px;
@@ -30,14 +30,16 @@ export const InputText = styled.input`
     height: 30px;
 `
 
-export const SubmitButton = styled.div`
+export const SubmitButton = styled.button`
     cursor: pointer;
     border-radius: 5px;
     background: #2E4EF6;
     color: white;
     width: 290px;
+    font-size: 16px;
     text-align: center;
     padding: 15px 0%;
+    border: 0;
     margin-top: 10px;
 `
 
