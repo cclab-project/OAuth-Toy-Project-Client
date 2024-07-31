@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useQueryClient } from 'react-query';
 
 import {
     Container,
@@ -30,7 +31,6 @@ const StoreAdminMain = () => {
     const [menuName, setMenuName] = useState('');
     const [menuCost, setMenuCost] = useState('');
     const [thumbnail, setThumbnail] = useState(null);
-    const [messages, setMessages] = useState([]);
     const handleImageChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -45,6 +45,9 @@ const StoreAdminMain = () => {
 
     }
 
+    const queryClient = useQueryClient();
+    const [messages, setMessages] = useState([]);
+    const [messages_2, setMessages_2] = useState([]);
     useEffect(() => {
         const eventSource = new EventSource(`${process.env.REACT_APP_SERVER_URL2}/api/sse/connect`);
 
@@ -52,6 +55,12 @@ const StoreAdminMain = () => {
             const newMessage = JSON.parse(event.data);
             setMessages((prevMessages) => [...prevMessages, newMessage]);
         };
+
+        eventSource.addEventListener('new_thread', (event) => {
+            const eventData = JSON.parse(event.data);
+            setMessages_2(eventData);
+            console.log("Received event:", eventData);
+        });
 
         eventSource.onerror = (error) => {
             console.error('SSE Error:', error);
@@ -111,6 +120,14 @@ const StoreAdminMain = () => {
                 <h1>주문 받기</h1>
                 <ul>
                     {messages.map((message, index) => (
+                        <li key={index}>{message.message}</li>
+                    ))}
+                </ul>
+            </div>
+            <div>
+                <h1>주문 받기2</h1>
+                <ul>
+                    {messages_2.map((message, index) => (
                         <li key={index}>{message.message}</li>
                     ))}
                 </ul>
