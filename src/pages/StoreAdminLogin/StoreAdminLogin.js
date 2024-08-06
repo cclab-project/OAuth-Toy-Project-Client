@@ -39,10 +39,10 @@ const StoreAdminLogin = () => {
     const noSubmitHandler = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL2}/login`, qs.stringify({
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL2}/login`, {
                 username: email,
                 password: password,
-            }), {
+            }, {
                 withCredentials: true
             });
             console.log(response);
