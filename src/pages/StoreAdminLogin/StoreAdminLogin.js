@@ -43,12 +43,10 @@ const StoreAdminLogin = () => {
                 username: email,
                 password: password,
             }), {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
                 withCredentials: true
             });
             console.log(response);
+            navigate("/AdminMain");
         } catch (error) {
             console.error('Error logging in:', error);
             alert('로그인 실패');
