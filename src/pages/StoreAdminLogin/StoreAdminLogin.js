@@ -21,7 +21,7 @@ const StoreAdminLogin = () => {
         event.preventDefault();
         try {
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL2}/open-api/store-user/login`, {
-                username: email,
+                email: email,
                 password: password,
             }, {
                 withCredentials: true
