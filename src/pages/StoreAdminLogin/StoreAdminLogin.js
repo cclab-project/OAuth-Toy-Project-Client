@@ -20,13 +20,10 @@ const StoreAdminLogin = () => {
     const loginSubmitHandler = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL2}/login`, qs.stringify({
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL2}/open-api/store-user/login`, {
                 username: email,
                 password: password,
-            }), {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
+            }, {
                 withCredentials: true
             });
             console.log(response);
