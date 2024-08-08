@@ -1,7 +1,6 @@
 // hooks
 import { useNavigate } from "react-router-dom";
-import useAsync from "../../../hooks/useAsync/useAsync";
-
+import useAsync from "../../hooks/useAsync/useAsync";
 import Loading from "../../../components/Loading/Loading";
 import { kakaoLoginReq } from "../../../utils/authAPIs/authAPIs";
 
